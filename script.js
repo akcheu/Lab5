@@ -3,8 +3,8 @@
 const img = new Image(); // used to load image from <input> and draw to canvas
 
 // Canvas
-const canvas = document.getElementById('canvas');
-const context = canvas.getContext('2d');
+const canvas = document.getElementById("user-image");
+const context = canvas.getContext("2d");
 
 // Buttons
 var clearButton = document.querySelector("[type='reset']")
