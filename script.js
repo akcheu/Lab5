@@ -7,14 +7,20 @@ const canvas = document.getElementById('canvas');
 const context = canvas.getContext('2d');
 
 // Buttons
-var clearButton = document.querySelector("submit")
-var readButton = document.querySelector("read")
-var submitButton = document.querySelector("submit")
+var clearButton = document.querySelector("[type='reset']")
+var readButton = document.querySelector("[type='button']")
+var generateButton = document.querySelector("[type='submit']")
 
 // Fires whenever the img object loads a new image (such as with img.src =)
 img.addEventListener('load', () => {
   // TODO 
   context.clearRect(0, 0, canvas.width, canvas.height);
+  clearButton.disabled = false;
+  readButton.disabled = false;
+  generateButton.disabled = true;
+  context.fillStyle = "black";
+  context.fillRect(0, 0, canvas.width, canvas.height);
+
   
   // Some helpful tips:
   // - Fill the whole Canvas with black first to add borders on non-square images, then draw on top
