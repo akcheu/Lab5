@@ -2,10 +2,20 @@
 
 const img = new Image(); // used to load image from <input> and draw to canvas
 
+// Canvas
+const canvas = document.getElementById('canvas');
+const context = canvas.getContext('2d');
+
+// Buttons
+var clearButton = document.querySelector("submit")
+var readButton = document.querySelector("read")
+var submitButton = document.querySelector("submit")
+
 // Fires whenever the img object loads a new image (such as with img.src =)
 img.addEventListener('load', () => {
-  // TODO
-
+  // TODO 
+  context.clearRect(0, 0, canvas.width, canvas.height);
+  
   // Some helpful tips:
   // - Fill the whole Canvas with black first to add borders on non-square images, then draw on top
   // - Clear the form when a new image is selected
