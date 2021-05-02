@@ -4,29 +4,41 @@ const img = new Image(); // used to load image from <input> and draw to canvas
 
 // Canvas
 const canvas = document.getElementById("user-image");
-const context = canvas.getContext("2d");
+const context = canvas.getContext('2d');
 
 // Buttons
-var clearButton = document.querySelector("[type='reset']")
-var readButton = document.querySelector("[type='button']")
-var generateButton = document.querySelector("[type='submit']")
+const clearButton = document.querySelector("[type='reset']");
+const readButton = document.querySelector("[type='button']");
+const generateButton = document.querySelector("[type='submit']");
 
 // Fires whenever the img object loads a new image (such as with img.src =)
 img.addEventListener('load', () => {
   // TODO 
   context.clearRect(0, 0, canvas.width, canvas.height);
+
   clearButton.disabled = false;
   readButton.disabled = false;
   generateButton.disabled = true;
+
   context.fillStyle = "black";
   context.fillRect(0, 0, canvas.width, canvas.height);
 
+  var dimensions = getDimmensions(canvas.width, canvas.height, img.imageWidth, img.imageHeight);
+  context.drawImage(img, dimensions.startX, dimensions.startY, dimensions.width, dimensions.height);
   
   // Some helpful tips:
   // - Fill the whole Canvas with black first to add borders on non-square images, then draw on top
   // - Clear the form when a new image is selected
   // - If you draw the image to canvas here, it will update as soon as a new image is selected
 });
+
+var input = document.getElementById("image-input");
+input.addEventListener('change', () => {
+  img.src = URL.createObjectURL(input.files[0]);
+  img.alt = input.files[0].name;
+});
+
+
 
 /**
  * Takes in the dimensions of the canvas and the new image, then calculates the new
