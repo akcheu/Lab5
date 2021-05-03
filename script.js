@@ -32,20 +32,19 @@ img.addEventListener('load', () => {
 
   let dimensions = getDimmensions(canvas.width, canvas.height, img.width, img.height);
   context.drawImage(img, dimensions.startX, dimensions.startY, dimensions.width, dimensions.height);
-
 });
 
 // Image Input
-let input = document.getElementById("image-input");
+let input = document.getElementById('image-input');
 input.addEventListener('change', (event) => {
   img.src = URL.createObjectURL(input.files[0]);
   img.alt = input.files[0].name;
 });
 
 // Form Submit
-let form = document.getElementById("generate-meme");
+let form = document.getElementById('generate-meme');
 form.addEventListener('submit', (event) => {
-  let topText = document.getElementById("text-top").value;
+  let topText = document.getElementById('text-top').value;
   let bottomText = document.getElementById('text-bottom').value;
 
   context.font = "50px Arial";
@@ -96,7 +95,6 @@ if (speechSynthesis.onvoiceschanged !== undefined) {
 
 // Read Button
 readButton.addEventListener('click', (event) => {
-
   let topText = document.getElementById('text-top').value;
   let bottomText = document.getElementById('text-bottom').value;
   let utterance = new SpeechSynthesisUtterance(topText + ' ' + bottomText);
